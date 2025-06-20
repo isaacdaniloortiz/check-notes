@@ -24,8 +24,8 @@ def register_student():
     except ValueError:
         print("Invalid age. Please enter a number.")
         return
-    worth_id = (students[-1]["id"] )
-    worth_id += 1
+    id_value = (students[-1]["id"] )
+    id_value += 1
 
 
     notes = []
@@ -37,7 +37,7 @@ def register_student():
             print("Invalid note. Try again.")
             return
 
-    add_students = {"name": name, "id": worth_id,"age": age, "notes": []}
+    add_students = {"name": name, "id": id_value,"age": age, "notes": []}
 
     add_students["notes"] = notes
     students.append(add_students)
@@ -52,18 +52,16 @@ def consult_student():
         print("Invalid ID. must be a number")
         return
 
-    found = False
+    found_student = False
 
     for student in students:
         if student["id"] == consult_id:
             print(f"Name: {student['name']}, age: {student['age']}, notes: {student['notes']}")
             print(f"Average: {sum(student['notes']) / len(student['notes'])}")
-            found = True
+            found_student = True
             break
-    if not found:
+    if not found_student:
         print("Student not found.")
-
-    return
 
 #This function update the note of a student of the list
 def update_notes():
@@ -94,7 +92,6 @@ def update_notes():
     if not found_data:
         print("student not found.")
 
-        return
         
 #this function delete a student of the list with all his information.
 def delete_students():
@@ -104,46 +101,44 @@ def delete_students():
         print("Invalid ID. must be a number.")
         return
 
-    found_delete = False
+    deleted_student = False
 
     for i in range(len(students)):
         if students[i]["id"] == number_id:
             students.pop(i)
             print("student deleted succesfully.")
-            found_delete = True
+            deleted_student = True
             break
-    if not found_delete:
+    if not deleted_student:
         print("Student not found.")
 
-        return
-
 #the main menu of the program
-election = 0
-while election != 6:
+options = 0
+while options != 6:
 
     print("choose between one of the six options")
-    print("1. register to student")
-    print("2. consult to student")
+    print("1. register student")
+    print("2. consult student")
     print("3. update notes")
     print("4. delete student")
     print("5. see all students")
     print("6. exit")
     try:
-        election = int(input("enter a number from 1 to 6: "))
+        options = int(input("enter a number from 1 to 6: "))
     except ValueError:
         print("invalid input. Please enter a number.")
         continue
-    if election == 1:
+    if options == 1:
         print(register_student())
-    elif election == 2:
-        print(consult_student())
-    elif election == 3:
-        print(update_notes())
-    elif election == 4:
-        print(delete_students())
-    elif election == 5:
+    elif options == 2:
+        consult_student()
+    elif options == 3:
+        update_notes()
+    elif options == 4:
+        delete_students()
+    elif options == 5:
         print(students)
-    elif election == 6:
+    elif options == 6:
         print("exiting the program...")
     else:
         print("invalid option. try again.")
