@@ -1,4 +1,4 @@
-# Personal Portfolio - Isaac Ortiz
+# check_notes - Isaac Ortiz
 
 A program in python that has the purpose of showing my skills in python.
 
